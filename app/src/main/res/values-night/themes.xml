@@ -1,6 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.SmartwatchCardio" parent="Theme.Material3.DayNight.NoActionBar">
+
+    <!-- si quieren activar el modo oscuro, cambiar parent="Theme.Material3.Light.NoActionBar" a  parent="Theme.Material3.DayNight.NoActionBar"-->
+    <style name="Base.Theme.SmartwatchCardio" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>

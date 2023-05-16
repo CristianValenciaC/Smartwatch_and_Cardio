@@ -12,7 +12,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.rob.smartwatchcardio.databinding.ActivityInicioBinding;
 
-public class inicio extends AppCompatActivity {
+public class Inicio extends AppCompatActivity {
 
     private ActivityInicioBinding binding;
 
@@ -27,10 +27,9 @@ public class inicio extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                R.id.navigation_inicio, R.id.navigation_historial, R.id.navigation_perfil)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_inicio);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 

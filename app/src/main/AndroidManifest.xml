@@ -16,7 +16,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".inicio"
+            android:name=".Inicio"
             android:exported="false"
             android:label="@string/title_activity_inicio" />
         <activity
