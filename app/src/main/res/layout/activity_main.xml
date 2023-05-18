@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/logo" />
 
     <Button
-        android:id="@+id/signUpButton"
+        android:id="@+id/crearCuentaButton"
         android:layout_width="172dp"
         android:layout_height="48dp"
         android:layout_marginStart="96dp"
@@ -31,7 +31,7 @@
         android:layout_marginEnd="92dp"
         android:backgroundTint="#FE4141"
         android:fontFamily="@font/inter"
-        android:text="@string/crear_cuenta"
+        android:text="Crear cuenta"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.45"
@@ -40,7 +40,7 @@
         tools:ignore="TextSizeCheck" />
 
     <Button
-        android:id="@+id/signInButton"
+        android:id="@+id/iniciarSesionButton"
         android:layout_width="172dp"
         android:layout_height="48dp"
         android:layout_marginStart="96dp"
@@ -48,12 +48,12 @@
         android:layout_marginEnd="92dp"
         android:backgroundTint="#FFFFF4"
         android:fontFamily="@font/inter"
-        android:text="@string/iniciar_sesion"
+        android:text="Iniciar sesión"
         android:textColor="#D32F2F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpButton"
+        app:layout_constraintTop_toBottomOf="@+id/crearCuentaButton"
         app:strokeColor="#000000"
         app:strokeWidth="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

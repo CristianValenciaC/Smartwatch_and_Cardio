@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Requisitos">
+
+    <Button
+        android:id="@+id/atrasButton"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#FE4141"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/flecha_izquierda"
+        android:importantForAccessibility="no" />
+
+    <Button
+        android:id="@+id/continuarButton"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#FE4141"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/flecha_derecha"
+        android:importantForAccessibility="no" />
+
+    <TextView
+        android:id="@+id/requisitosText"
+        android:layout_width="286dp"
+        android:layout_height="275dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="63dp"
+        android:fontFamily="@font/inter"
+        android:text="¡Hola! Bienvenido/a al Tutorial de Smartwatch and Cardio, el lugar perfecto para aprender cómo utilizar nuestra aplicación de monitoreo de frecuencia cardíaca en tu smartwatch. En este tutorial, te enseñaremos cómo tomar y gestionar tus muestras cardiacas de forma efectiva para que puedas mantener un control preciso sobre tu salud cardiovascular. Con Smartwatch and Cardio, tendrás la tranquilidad de saber que estás monitoreando tu frecuencia cardíaca en todo momento, lo que te permitirá detectar posibles problemas de salud a tiempo y tomar medidas preventivas. ¡Empecemos!  "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter"
+        android:text="Para empezar, sigue a la flecha de la derecha."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requisitosText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

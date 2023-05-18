@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,14 +17,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        signIn=findViewById(R.id.signInButton);
+        signIn=findViewById(R.id.iniciarSesionButton);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"inicio",Toast.LENGTH_LONG).show();
+                Intent i=new Intent(MainActivity.this,IniciarSesionActivity.class);
+                startActivity(i);
             }
         });
 
+        signUp=findViewById(R.id.crearCuentaButton);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
