@@ -4,24 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Comprobacion">
+    android:backgroundTint="#FD4141"
+    tools:context=".Paso1">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="305dp"
-        android:layout_height="380dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="53dp"
+        android:id="@+id/imageView8"
+        android:layout_width="222dp"
+        android:layout_height="365dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/solocuerpomacizo" />
+        app:srcCompat="@drawable/e1" />
 
 
-
-
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="238dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:fontFamily="@font/inter"
+        android:text="Situe el dispositivo en la ubicación demostrada"
+        app:layout_constraintEnd_toStartOf="@+id/helpButtonp5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <Button
-        android:id="@+id/atrasButtonC"
+        android:id="@+id/helpButtonp5"
+        android:layout_width="78dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FD4141"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/atrasButtonP5"
         android:layout_width="77dp"
         android:layout_height="77dp"
         android:layout_marginStart="16dp"
@@ -35,15 +53,15 @@
         android:id="@+id/imageView5"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="28dp"
+        android:importantForAccessibility="no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/flecha_izquierda"
-        android:importantForAccessibility="no" />
+        app:srcCompat="@drawable/flecha_izquierda" />
 
     <Button
-        android:id="@+id/continuarButtonC"
+        android:id="@+id/continuarButtonP5"
         android:layout_width="77dp"
         android:layout_height="77dp"
         android:layout_marginEnd="16dp"
@@ -58,41 +76,19 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="28dp"
         android:importantForAccessibility="no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/flecha_derecha" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="321dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/inter"
-        android:text="Este será el esquema del cuerpo humano que te asistirá para ubicarte durante el proceso de recolección de información."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="321dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/inter"
-        android:text="En cada paso, aparecerá este icono    para indicarte donde deberás colocar tu smartwatch."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
     <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="20dp"
-        android:layout_height="10dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="528dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/imageView9"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="432dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/corazon" />
+        app:srcCompat="@drawable/interrogation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

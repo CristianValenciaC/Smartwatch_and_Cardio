@@ -17,14 +17,14 @@ public class Comprobacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comprobacion);
 
-        atrasButton=findViewById(R.id.atrasButton);
+        atrasButton=findViewById(R.id.atrasButtonC);
         atrasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Comprobacion.this,Requisitos.class));
             }
         });
-        continuarButton=findViewById(R.id.continuarButton);
+        continuarButton=findViewById(R.id.continuarButtonC);
         continuarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
