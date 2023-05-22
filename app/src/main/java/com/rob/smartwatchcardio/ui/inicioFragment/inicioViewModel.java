@@ -1,14 +1,14 @@
-package com.rob.smartwatchcardio.ui.home;
+package com.rob.smartwatchcardio.ui.inicioFragment;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class inicioViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public inicioViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }

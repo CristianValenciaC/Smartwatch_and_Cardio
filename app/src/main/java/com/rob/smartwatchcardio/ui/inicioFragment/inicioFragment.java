@@ -1,31 +1,29 @@
-package com.rob.smartwatchcardio.ui.home;
+package com.rob.smartwatchcardio.ui.inicioFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.rob.smartwatchcardio.databinding.FragmentHomeBinding;
+import com.rob.smartwatchcardio.databinding.FragmentInicioBinding;
 
-public class HomeFragment extends Fragment {
+public class inicioFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentInicioBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        inicioViewModel homeViewModel =
+                new ViewModelProvider(this).get(inicioViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentInicioBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 

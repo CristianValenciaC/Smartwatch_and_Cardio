@@ -1,4 +1,4 @@
-package com.rob.smartwatchcardio.ui.dashboard;
+package com.rob.smartwatchcardio.ui.perfilFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.rob.smartwatchcardio.databinding.FragmentDashboardBinding;
+import com.rob.smartwatchcardio.databinding.FragmentPerfilBinding;
 
-public class DashboardFragment extends Fragment {
+public class PerfilFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
+    private FragmentPerfilBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        PerfilViewModel notificationsViewModel =
+                new ViewModelProvider(this).get(PerfilViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

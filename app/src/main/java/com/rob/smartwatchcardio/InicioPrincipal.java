@@ -12,7 +12,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.rob.smartwatchcardio.databinding.ActivityInicioBinding;
 
-public class Inicio extends AppCompatActivity {
+public class InicioPrincipal extends AppCompatActivity {
 
     private ActivityInicioBinding binding;
 
