@@ -6,14 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textoIncio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="285dp"
+        android:layout_height="285dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="213dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="330dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.484"
+        app:srcCompat="@drawable/logo" />
 
+    <Button
+        android:id="@+id/crearCuentaButton"
+        android:layout_width="172dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="92dp"
+        android:backgroundTint="#FE4141"
+        android:fontFamily="@font/inter"
+        android:text="Crear cuenta"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="TextSizeCheck" />
+
+    <Button
+        android:id="@+id/iniciarSesionButton"
+        android:layout_width="172dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="92dp"
+        android:backgroundTint="#FFFFF4"
+        android:fontFamily="@font/inter"
+        android:text="Iniciar sesión"
+        android:textColor="#D32F2F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crearCuentaButton"
+        app:strokeColor="#000000"
+        app:strokeWidth="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
