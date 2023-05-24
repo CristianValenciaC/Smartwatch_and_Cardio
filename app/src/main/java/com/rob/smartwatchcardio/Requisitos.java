@@ -21,14 +21,19 @@ public class Requisitos extends AppCompatActivity {
         atrasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Requisitos.this,MainActivity.class));
+                finish();
+                onBackPressed();
+
             }
         });
         continuarButton=findViewById(R.id.continuarButtonR);
         continuarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Requisitos.this, Comprobacion.class));
+                Intent intent = new Intent(Requisitos.this, Comprobacion.class);
+
+                startActivity(intent);
+
             }
         });
     }

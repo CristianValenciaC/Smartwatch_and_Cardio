@@ -12,27 +12,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartwatchCardio"
         tools:targetApi="31">
+
         <activity
             android:name=".Paso5"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
+
             android:name=".Paso4"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
             android:name=".Paso3"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
             android:name=".Paso2"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
             android:name=".Paso1"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"/>
         <activity
             android:name=".Comprobacion"
-            android:exported="false" />
+            android:noHistory="true" />
         <activity
             android:name=".Requisitos"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".IniciarSesionActivity"
             android:exported="false" />

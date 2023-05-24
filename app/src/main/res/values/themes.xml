@@ -5,6 +5,9 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:statusBarColor">@color/rosao</item>
+        <item name="android:navigationBarColor">@color/rosao</item>
+
+
     </style>
 
     <style name="Theme.SmartwatchCardio" parent="Base.Theme.SmartwatchCardio" />

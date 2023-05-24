@@ -23,14 +23,14 @@ public class Paso5 extends AppCompatActivity {
         atrasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Paso5.this,Paso4.class));
+                finish();
             }
         });
         continuarButton=findViewById(R.id.continuarButtonP5);
         continuarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
                 startActivity(new Intent(Paso5.this, Paso1.class));
             }
         });

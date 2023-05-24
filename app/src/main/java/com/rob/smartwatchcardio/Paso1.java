@@ -24,14 +24,19 @@ public class Paso1 extends AppCompatActivity {
         atrasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Paso1.this,Requisitos.class));
+                finish();
             }
         });
         continuarButton=findViewById(R.id.continuarButtonP1);
         continuarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Paso1.this, Paso2.class));
+
+                Intent intent = new Intent(Paso1.this, Paso2.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                finish();
+                startActivity(intent);
+
             }
         });
         helpButton=findViewById(R.id.helpButtonP1);
@@ -42,4 +47,5 @@ public class Paso1 extends AppCompatActivity {
             }
         });
     }
+
 }

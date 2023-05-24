@@ -21,13 +21,14 @@ public class Comprobacion extends AppCompatActivity {
         atrasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Comprobacion.this,Requisitos.class));
+                finish();
             }
         });
         continuarButton=findViewById(R.id.continuarButtonC);
         continuarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(new Intent(Comprobacion.this, Paso1.class));
             }
         });
