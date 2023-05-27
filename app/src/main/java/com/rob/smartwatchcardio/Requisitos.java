@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Requisitos extends AppCompatActivity {
 
-    private Button atrasButton;
-    private Button continuarButton;
+    private ImageButton atrasButton;
+    private ImageButton continuarButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

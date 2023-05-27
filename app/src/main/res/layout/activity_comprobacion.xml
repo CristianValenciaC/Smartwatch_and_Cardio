@@ -6,6 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".Comprobacion">
 
+    <ImageButton
+        android:id="@+id/continuarButtonC"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/botonatras"
+        android:backgroundTint="@color/Principal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/flecha_derecha"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/atrasButtonC"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/botonatras"
+        android:backgroundTint="@color/Principal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/flecha_izquierda"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="305dp"
@@ -16,53 +42,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/solocuerpomacizo" />
 
-
-
-
-
-    <Button
-        android:id="@+id/atrasButtonC"
-        android:layout_width="77dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FE4141"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/flecha_izquierda"
-        android:importantForAccessibility="no" />
-
-    <Button
-        android:id="@+id/continuarButtonC"
-        android:layout_width="77dp"
-        android:layout_height="77dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FE4141"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="32dp"
-        android:importantForAccessibility="no"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/flecha_derecha" />
 
     <TextView
         android:id="@+id/textView3"
@@ -90,9 +69,11 @@
         android:id="@+id/imageView7"
         android:layout_width="20dp"
         android:layout_height="10dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="528dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.784"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.159"
         app:srcCompat="@drawable/corazon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

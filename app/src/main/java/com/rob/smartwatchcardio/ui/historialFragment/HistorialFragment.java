@@ -38,7 +38,7 @@ public class HistorialFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        iniciarTest= getView().findViewById(R.id.iniciarTest1);
+        iniciarTest= getView().findViewById(R.id.iniciarTest2);
         iniciarTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

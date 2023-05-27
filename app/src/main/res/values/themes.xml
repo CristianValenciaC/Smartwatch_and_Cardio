@@ -4,8 +4,8 @@
     <style name="Base.Theme.SmartwatchCardio" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:statusBarColor">@color/rosao</item>
-        <item name="android:navigationBarColor">@color/rosao</item>
+        <item name="android:statusBarColor">@color/Principal</item>
+        <item name="android:navigationBarColor">@color/Principal</item>
 
 
     </style>
