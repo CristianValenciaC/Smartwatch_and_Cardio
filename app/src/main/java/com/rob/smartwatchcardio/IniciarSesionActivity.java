@@ -29,7 +29,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(IniciarSesionActivity.this,Requisitos.class));
+                startActivity(new Intent(IniciarSesionActivity.this,InicioPrincipal.class));
             }
         });
     }

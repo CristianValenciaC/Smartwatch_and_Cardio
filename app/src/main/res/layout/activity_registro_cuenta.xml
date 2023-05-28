@@ -128,7 +128,7 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="664dp"
         android:layout_marginEnd="160dp"
-        android:backgroundTint="#FE4141"
+        android:backgroundTint="@color/Principal"
         android:text="Crear cuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
