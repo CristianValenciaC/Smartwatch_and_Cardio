@@ -30,7 +30,7 @@ public class RegistroCuenta extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account);
+        setContentView(R.layout.activity_registro_cuenta);
 
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);

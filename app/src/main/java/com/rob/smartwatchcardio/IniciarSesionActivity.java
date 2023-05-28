@@ -27,7 +27,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_iniciar_sesion);
 
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);

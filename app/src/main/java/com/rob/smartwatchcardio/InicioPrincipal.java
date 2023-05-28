@@ -11,16 +11,17 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.rob.smartwatchcardio.databinding.ActivityInicioBinding;
+import com.rob.smartwatchcardio.databinding.ActivityInicioPrincipalBinding;
 
 public class InicioPrincipal extends AppCompatActivity {
 
-    private ActivityInicioBinding binding;
+    private ActivityInicioPrincipalBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityInicioBinding.inflate(getLayoutInflater());
+        binding = ActivityInicioPrincipalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
