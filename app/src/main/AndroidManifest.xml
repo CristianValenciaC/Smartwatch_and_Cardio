@@ -37,10 +37,10 @@
             android:name=".Requisitos"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".IniciarSesionActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateAccountActivity"
+            android:name=".RegistroCuenta"
             android:exported="false" />
         <activity
             android:name=".InicioPrincipal"

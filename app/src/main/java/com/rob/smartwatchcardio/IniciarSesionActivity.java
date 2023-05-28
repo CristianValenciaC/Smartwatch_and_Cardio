@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+public class IniciarSesionActivity extends AppCompatActivity {
 
     EditText emailEditText, passwordEditText;
     Button loginBtn;
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         registerBtnTextView = findViewById(R.id.register_text_view_btn);
 
         loginBtn.setOnClickListener((v) -> loginUser());
-        registerBtnTextView.setOnClickListener((v) -> startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class)));
+        registerBtnTextView.setOnClickListener((v) -> startActivity(new Intent(IniciarSesionActivity.this, RegistroCuenta.class)));
 
     }
 
@@ -68,15 +68,15 @@ public class LoginActivity extends AppCompatActivity {
                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
 
                         //Ir al inicio de la aplicacion
-                        startActivity(new Intent(LoginActivity.this, InicioPrincipal.class));
+                        startActivity(new Intent(IniciarSesionActivity.this, InicioPrincipal.class));
 
                     }else{
-                        Utility.showToast(LoginActivity.this, "El email no ha sido verificado. Por favor, revisa tu correo");
+                        Utility.showToast(IniciarSesionActivity.this, "El email no ha sido verificado. Por favor, revisa tu correo");
                     }
 
                 }else{
                     //Fallo en el login
-                    Utility.showToast(LoginActivity.this, task.getException().getLocalizedMessage());
+                    Utility.showToast(IniciarSesionActivity.this, task.getException().getLocalizedMessage());
 
                 }
             }

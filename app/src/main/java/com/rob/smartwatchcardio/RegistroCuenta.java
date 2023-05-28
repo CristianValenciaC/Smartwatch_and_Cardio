@@ -19,7 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class CreateAccountActivity extends AppCompatActivity {
+public class RegistroCuenta extends AppCompatActivity {
 
     EditText emailEditText, passwordEditText, confirmPasswordEditText;
     Spinner genderSpinner;
@@ -41,7 +41,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         loginBtnTextView = findViewById(R.id.register_text_view_link);
 
         createAccountBtn.setOnClickListener((v) -> createAccount());
-        loginBtnTextView.setOnClickListener((v) -> startActivity(new Intent(CreateAccountActivity.this, LoginActivity.class)));
+        loginBtnTextView.setOnClickListener((v) -> startActivity(new Intent(RegistroCuenta.this, IniciarSesionActivity.class)));
 
 
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.sexos, android.R.layout.simple_spinner_item);
@@ -71,20 +71,20 @@ public class CreateAccountActivity extends AppCompatActivity {
         changeInProgress(true);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(CreateAccountActivity.this,
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistroCuenta.this,
                 new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             //La creacion de cuenta ha terminado
-                            Utility.showToast(CreateAccountActivity.this, "Cuenta creada correctamente, revise su correo para verificar la cuenta");
+                            Utility.showToast(RegistroCuenta.this, "Cuenta creada correctamente, revise su correo para verificar la cuenta");
                             firebaseAuth.getCurrentUser().sendEmailVerification();
                             firebaseAuth.signOut();
                             finish();
 
                         }else{
                             //Fallo en crear la cuenta
-                            Utility.showToast(CreateAccountActivity.this, task.getException().getLocalizedMessage());
+                            Utility.showToast(RegistroCuenta.this, task.getException().getLocalizedMessage());
 
                         }
                     }
