@@ -40,13 +40,6 @@ public class Paso6 extends AppCompatActivity {
 
             }
         });
-        helpButton=findViewById(R.id.helpButtonP1);
-        helpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Paso6.this,"Ayuda",Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
 }

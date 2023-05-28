@@ -10,7 +10,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.rob.smartwatchcardio.databinding.ActivityInicioBinding;
 import com.rob.smartwatchcardio.databinding.ActivityInicioPrincipalBinding;
 
 public class InicioPrincipal extends AppCompatActivity {

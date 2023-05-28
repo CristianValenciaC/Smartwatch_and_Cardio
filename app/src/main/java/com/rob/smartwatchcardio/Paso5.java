@@ -35,12 +35,5 @@ public class Paso5 extends AppCompatActivity {
                 startActivity(new Intent(Paso5.this, Paso6.class));
             }
         });
-        helpButton=findViewById(R.id.helpButtonp5);
-        helpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Paso5.this,"Ayuda",Toast.LENGTH_LONG).show();
-            }
-        });
     }
 }

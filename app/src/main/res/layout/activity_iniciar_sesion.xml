@@ -99,7 +99,7 @@
         android:id="@+id/login_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="95dp"
         android:layout_marginTop="20dp"
         android:text="@string/no_tienes_una_cuenta_text"
         app:layout_constraintStart_toStartOf="parent"

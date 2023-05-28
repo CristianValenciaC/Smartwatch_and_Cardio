@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter"
             android:text=" Historial test"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <Space
