@@ -9,10 +9,11 @@
     <string name="titulo_historial_test">Historial test</string>
     <string name="titulo_perfil">Perfil</string>
     <string-array name="sexos">
-        <item>Masculino</item>
-        <item>Femenino</item>
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>Otro</item>
     </string-array>
-    <string name="title_activity_comprobacion">Comprobacion</string>
+    <string name="title_activity_comprobacion">Comprobación</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -55,5 +56,20 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="ya_tienes_una_cuenta_text">¿Ya tienes una cuenta?</string>
+    <string name="register_text_view_btn">Inicia sesión</string>
+    <string name="create_account_btn">Crear cuenta</string>
+    <string name="gender_text_view">Sexo</string>
+    <string name="iniciar_sesion_text_view">Iniciar sesión</string>
+    <string name="email_edit_text">Email</string>
+    <string name="password_edit_text">Contraseña</string>
+    <string name="no_tienes_una_cuenta_text">¿No tienes una cuenta?</string>
+    <string name="register_text_view_link">Regístrate</string>
+    <string name="edad_edit_text">Edad</string>
+    <string name="confirm_password_edit_text">Confirmar contraseña</string>
+    <string name="password_edit_text2">Contraseña</string>
+    <string name="email_edit_text2">Email</string>
+    <string name="nombre_completo_edit_text">Nombre completo</string>
+    <string name="registrarse_text_view">Registrarse</string>
     <string name="title_activity_resultados">Resultados</string>
 </resources>

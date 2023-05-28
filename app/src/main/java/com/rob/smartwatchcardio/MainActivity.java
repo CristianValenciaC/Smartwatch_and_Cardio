@@ -17,22 +17,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        signIn=findViewById(R.id.iniciarSesionButton);
+        signIn = findViewById(R.id.iniciarSesion_btn);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(MainActivity.this,IniciarSesionActivity.class);
+                Intent i = new Intent(MainActivity.this, IniciarSesionActivity.class);
                 startActivity(i);
             }
         });
 
-        signUp=findViewById(R.id.crearCuentaButton);
+        signUp = findViewById(R.id.crearCuenta_btn);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(MainActivity.this,RegistroCuenta.class);
+                Intent i = new Intent(MainActivity.this, RegistroCuenta.class);
                 startActivity(i);
-
             }
         });
     }
