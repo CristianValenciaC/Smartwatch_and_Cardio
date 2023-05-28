@@ -3,5 +3,8 @@
     <style name="Base.Theme.SmartwatchCardio" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <item name="android:statusBarColor">@color/Principal</item>
+        <item name="android:navigationBarColor">@color/Principal</item>
     </style>
 </resources>

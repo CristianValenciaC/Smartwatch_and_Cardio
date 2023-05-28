@@ -9,38 +9,43 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class Paso2 extends AppCompatActivity {
+public class Paso7 extends AppCompatActivity {
     private ImageButton atrasButton;
     private ImageButton continuarButton;
+
     private Button helpButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_paso2);
-        atrasButton=findViewById(R.id.atrasButtonP2);
+        setContentView(R.layout.activity_paso7);
+
+        atrasButton=findViewById(R.id.atrasButtonP7);
         atrasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        continuarButton=findViewById(R.id.continuarButtonP2);
+        continuarButton=findViewById(R.id.continuarButtonP7);
         continuarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Paso2.this, Paso3.class);
+                Intent intent = new Intent(Paso7.this, Paso8.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 finish();
                 startActivity(intent);
+
             }
         });
-        helpButton=findViewById(R.id.helpButtonP2);
+        helpButton=findViewById(R.id.helpButtonP1);
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Paso2.this,"Ayuda",Toast.LENGTH_LONG).show();
+                Toast.makeText(Paso7.this,"Ayuda",Toast.LENGTH_LONG).show();
             }
         });
     }
+
 }

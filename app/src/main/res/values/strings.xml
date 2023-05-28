@@ -71,4 +71,5 @@
     <string name="email_edit_text2">Email</string>
     <string name="nombre_completo_edit_text">Nombre completo</string>
     <string name="registrarse_text_view">Registrarse</string>
+    <string name="title_activity_resultados">Resultados</string>
 </resources>

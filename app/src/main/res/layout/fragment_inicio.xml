@@ -7,13 +7,13 @@
     >
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/iniciarTest1"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/cuadrado"
-        android:backgroundTint="@color/rosao"
+        android:background="@drawable/boton"
+        android:backgroundTint="@color/Principal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/icono_crear"

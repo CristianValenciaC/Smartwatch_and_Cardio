@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Comprobacion extends AppCompatActivity {
 
-    private Button atrasButton;
-    private Button continuarButton;
+    private ImageButton atrasButton;
+    private ImageButton continuarButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +22,14 @@ public class Comprobacion extends AppCompatActivity {
         atrasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Comprobacion.this,Requisitos.class));
+                finish();
             }
         });
         continuarButton=findViewById(R.id.continuarButtonC);
         continuarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(new Intent(Comprobacion.this, Paso1.class));
             }
         });
