@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SmartwatchCardio"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Paso5"
             android:exported="false" />
         <activity
@@ -34,17 +37,17 @@
             android:name=".Requisitos"
             android:exported="false" />
         <activity
-            android:name=".IniciarSesionActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistroCuenta"
+            android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity
             android:name=".InicioPrincipal"
             android:exported="false"
             android:label="@string/title_activity_inicio" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,6 +55,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
