@@ -13,6 +13,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        app:tint="@color/colorBotones"
         android:background="@drawable/botonatras"
         android:backgroundTint="@color/Principal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,6 +31,7 @@
         android:backgroundTint="@color/Principal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/colorBotones"
         app:srcCompat="@drawable/flecha_derecha"
         tools:ignore="SpeakableTextPresentCheck" />
 

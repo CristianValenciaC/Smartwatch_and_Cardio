@@ -12,6 +12,8 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="16dp"
+        app:tint="@color/colorBotones"
+
         android:layout_marginBottom="16dp"
         android:background="@drawable/botonatras"
         android:backgroundTint="@color/Principal"
@@ -24,6 +26,7 @@
         android:id="@+id/continuarButtonP5"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        app:tint="@color/colorBotones"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/botonatras"

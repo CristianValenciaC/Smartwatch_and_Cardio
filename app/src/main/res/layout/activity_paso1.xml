@@ -7,6 +7,12 @@
     android:backgroundTint="#FD4141"
     tools:context=".Paso1">
 
+    <Chronometer
+        android:id="@+id/simpleChronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="222dp"
@@ -38,6 +44,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/botonatras"
         android:backgroundTint="@color/Principal"
+        app:tint="@color/colorBotones"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/flecha_izquierda"
@@ -51,6 +58,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/botonatras"
         android:backgroundTint="@color/Principal"
+        app:tint="@color/colorBotones"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/flecha_derecha"
