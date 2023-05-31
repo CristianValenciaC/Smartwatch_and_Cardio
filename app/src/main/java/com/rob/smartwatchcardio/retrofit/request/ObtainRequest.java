@@ -7,6 +7,8 @@ public class ObtainRequest {
     private int status;
     private JsonObject body;
 
+    private String error;
+
     public int getStatus() {
         return status;
     }
@@ -23,4 +25,11 @@ public class ObtainRequest {
         this.body = body;
     }
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
 }
