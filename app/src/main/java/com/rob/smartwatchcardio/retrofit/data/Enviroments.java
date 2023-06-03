@@ -12,6 +12,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class Enviroments {
 
+    private String UID;
     private String action;
     private String idUser = "c5089a0c400478a309cfddb4ce557af7456e851fcb4b82b6161d08e453db6f05";
     private String secret = "6f8d92529b8aba30fa86d9cb9df5f827bb4a84af4ee689ca792c4ed5d2f51a5a";
@@ -27,6 +28,24 @@ public class Enviroments {
     private String redirect_uri = "https://oauth.pstmn.io/v1/browser-callback";
 
     public Enviroments() throws NoSuchAlgorithmException, InvalidKeyException {
+
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Long timeStampAux = timestamp.getTime() / 1000L;
+        this.timeStamp= timeStampAux.intValue();
+
+        Map<String, String> signedParams = new TreeMap<>();
+        signedParams.put("action", "activate");
+        signedParams.put("client_id", idUser);
+        signedParams.put("timestamp", String.valueOf(timestamp));
+
+        String data = String.join(",", signedParams.values());
+
+        signatureValue = generateHmacSHA256(data, secret);
+    }
+
+    public Enviroments(String UID_usuario) throws NoSuchAlgorithmException, InvalidKeyException {
+
+        this.UID = UID_usuario;
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Long timeStampAux = timestamp.getTime() / 1000L;
