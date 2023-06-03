@@ -72,4 +72,10 @@
     <string name="nombre_completo_edit_text">Nombre completo</string>
     <string name="registrarse_text_view">Registrarse</string>
     <string name="title_activity_resultados">Resultados</string>
+    <string name="continuar">Continuar</string>
+    <string name="url_autorizacion">Url Autorizacion</string>
+    <string name="abrir_navegador">Abrir Navegador</string>
+    <string name="comprobando_la_autorizacion_con_el_reloj">Comprobando la autorizacion con el reloj</string>
+    <string name="empecemos">Empecemos</string>
+    <string name="obtener_autorizacion">Obtener Autorizacion</string>
 </resources>

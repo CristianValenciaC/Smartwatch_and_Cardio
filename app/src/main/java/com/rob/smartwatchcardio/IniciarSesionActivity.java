@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.rob.smartwatchcardio.authorizationwatch.AuthorizationComprobate;
 
 public class IniciarSesionActivity extends AppCompatActivity {
 
@@ -67,8 +68,10 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
 
-                        //Ir al inicio de la aplicacion
-                        startActivity(new Intent(IniciarSesionActivity.this, InicioPrincipal.class));
+                        //Ir al inicio de la aplicacion y comprobar que el acceso al reloj es correcto
+                        Intent i = new Intent(IniciarSesionActivity.this, AuthorizationComprobate.class);
+                        i.putExtra("stage", 0);
+                        startActivity(i);
 
                     }else{
                         Utility.showToast(IniciarSesionActivity.this, "El email no ha sido verificado. Por favor, revisa tu correo");
