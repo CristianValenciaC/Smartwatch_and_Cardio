@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.rob.smartwatchcardio.R;
-import com.rob.smartwatchcardio.retrofit.data.Enviroments;
+import com.rob.smartwatchcardio.retrofit.data.Environments;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -49,7 +49,7 @@ public class Authorization extends AppCompatActivity {
 
     private void abrirNavegador(){
         try {
-            Enviroments globalVariable = new Enviroments();
+            Environments globalVariable = new Environments();
             globalVariable.setState("TmosVHhcGNF_Lis");
             globalVariable.setScope("user.metrics,user.activity");
 

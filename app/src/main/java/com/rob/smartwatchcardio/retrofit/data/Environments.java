@@ -10,7 +10,7 @@ import java.util.TreeMap;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-public class Enviroments {
+public class Environments {
 
     private String UID;
     private String action;
@@ -27,7 +27,7 @@ public class Enviroments {
     private String scope;
     private String redirect_uri = "https://oauth.pstmn.io/v1/browser-callback";
 
-    public Enviroments() throws NoSuchAlgorithmException, InvalidKeyException {
+    public Environments() throws NoSuchAlgorithmException, InvalidKeyException {
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Long timeStampAux = timestamp.getTime() / 1000L;
@@ -43,7 +43,7 @@ public class Enviroments {
         signatureValue = generateHmacSHA256(data, secret);
     }
 
-    public Enviroments(String UID_usuario) throws NoSuchAlgorithmException, InvalidKeyException {
+    public Environments(String UID_usuario) throws NoSuchAlgorithmException, InvalidKeyException {
 
         this.UID = UID_usuario;
 

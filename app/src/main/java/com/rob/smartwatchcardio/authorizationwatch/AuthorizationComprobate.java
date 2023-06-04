@@ -6,12 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.gson.JsonObject;
-import com.rob.smartwatchcardio.IniciarSesionActivity;
 import com.rob.smartwatchcardio.InicioPrincipal;
 import com.rob.smartwatchcardio.R;
 import com.rob.smartwatchcardio.retrofit.APIRequest;
 import com.rob.smartwatchcardio.retrofit.RetrofitInstance;
-import com.rob.smartwatchcardio.retrofit.data.Enviroments;
+import com.rob.smartwatchcardio.retrofit.data.Environments;
 import com.rob.smartwatchcardio.retrofit.request.ObtainRequest;
 
 import java.security.InvalidKeyException;
@@ -25,7 +24,7 @@ import retrofit2.Retrofit;
 public class AuthorizationComprobate extends AppCompatActivity {
 
     private RetrofitInstance retrofitInstance;
-    private Enviroments globalVariable;
+    private Environments globalVariable;
     private int stage;
 
 
@@ -38,7 +37,7 @@ public class AuthorizationComprobate extends AppCompatActivity {
 
         stage = getIntent().getExtras().getInt("stage", 0);
         try {
-            globalVariable = new Enviroments();
+            globalVariable = new Environments();
             if(stage != 2){
                 refreshAccessToken();
             }else{
