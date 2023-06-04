@@ -27,5 +27,9 @@ public interface APIRequest {
                                            @Query("client_secret")String secret,
                                            @Query("refresh_token")String authorization_code,
                                            @Query("redirect_uri") String url);
+    @POST("v2/heart")
+    Call<ObtainRequest> getSignalIdData(@Header("Authorization") String access_tokenBeard,
+                                        @Query("action")String action,
+                                        @Query("signalid")int signalid);
 
 }

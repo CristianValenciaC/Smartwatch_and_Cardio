@@ -23,7 +23,6 @@ import retrofit2.Retrofit;
 
 public class AuthorizationComprobate extends AppCompatActivity {
 
-    private RetrofitInstance retrofitInstance;
     private Environments globalVariable;
     private int stage;
 
@@ -32,8 +31,6 @@ public class AuthorizationComprobate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorization_comprobate);
-
-        retrofitInstance = new RetrofitInstance();
 
         stage = getIntent().getExtras().getInt("stage", 0);
         try {
@@ -44,15 +41,13 @@ public class AuthorizationComprobate extends AppCompatActivity {
                 globalVariable.setCode(getIntent().getExtras().getString("code",""));
                 getAccessToken();
             }
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidKeyException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeyException e) {
             throw new RuntimeException(e);
         }
     }
 
     private void refreshAccessToken(){
-        Retrofit info = retrofitInstance.getRetrofit();
+        Retrofit info = RetrofitInstance.getRetrofit();
 
         APIRequest apiInterface = info.create(APIRequest.class);
         globalVariable.setAction("requesttoken");
@@ -86,7 +81,7 @@ public class AuthorizationComprobate extends AppCompatActivity {
     }
 
     private void getAccessToken(){
-        Retrofit info = retrofitInstance.getRetrofit();
+        Retrofit info = RetrofitInstance.getRetrofit();
 
         APIRequest apiInterface = info.create(APIRequest.class);
         globalVariable.setAction("requesttoken");

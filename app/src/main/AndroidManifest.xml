@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SmartwatchCardio"
         tools:targetApi="31">
         <activity
+            android:name=".ObtenerEMCPaso"
+            android:exported="false" />
+        <activity
             android:name=".authorizationwatch.AuthorizationFalse"
             android:configChanges="orientation"
             android:exported="false"
