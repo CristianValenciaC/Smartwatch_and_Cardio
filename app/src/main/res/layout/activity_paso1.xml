@@ -7,13 +7,6 @@
     android:backgroundTint="#FD4141"
     tools:context=".Paso1">
 
-    <Chronometer
-        android:id="@+id/simpleChronometer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="222dp"

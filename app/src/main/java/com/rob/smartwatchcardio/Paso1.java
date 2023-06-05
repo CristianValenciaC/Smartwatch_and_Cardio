@@ -2,6 +2,8 @@ package com.rob.smartwatchcardio;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -34,50 +36,13 @@ public class Paso1 extends AppCompatActivity {
     //variables del comprobar popup
     private Button botonComprobar;
     private boolean empezarPrueba = false;
-    private  Chronometer simpleChronometer;
+    private Chronometer cronometro;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paso1);
-
-
-        simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
-        simpleChronometer.start();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            simpleChronometer.setCountDown(true);
-            simpleChronometer.setBase(SystemClock.elapsedRealtime()+6*1000);
-            simpleChronometer.setFormat("");
-
-            simpleChronometer.start();
-        }
-        simpleChronometer
-                .setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-
-                    @Override
-                    public void onChronometerTick(Chronometer chronometer) {
-                        long time = SystemClock.elapsedRealtime() - chronometer.getBase();
-                        int h   = (int)(time /3600000);
-                        int m = (int)(time - h*3600000)/60000;
-                        int s= (int)((time - h*3600000- m*60000)/1000 )*-1;
-                        String ss = s < 10 ? ""+s: s+"";
-                        chronometer.setText(""+ss);
-
-                        if(ss.equalsIgnoreCase("0")){
-                            simpleChronometer.stop();
-
-                            if (!empezarPrueba){
-                                empezarPrueba=true;
-                                simpleChronometer.setBase(SystemClock.elapsedRealtime()+31*1000);
-                                simpleChronometer.start();
-                            }
-                        }
-
-
-
-
-                    }
-                });
         helpButton=findViewById(R.id.infoButton);
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,12 +84,60 @@ public class Paso1 extends AppCompatActivity {
             public void onDismiss(DialogInterface dialog) {
                 // Realiza alguna acción cuando el diálogo se cierre
 
-                simpleChronometer.stop();
+                cronometro.stop();
                 empezarPrueba=false;
                 // ...
             }
         });
+        //
+        cronometro = dialog.findViewById(R.id.Crono);
+        botonComprobar = dialog.findViewById(R.id.button);
+        botonComprobar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View v) {
+                cronometro.start();
+                cronometro.setCountDown(true);
+                cronometro.setBase(SystemClock.elapsedRealtime()+6*1000);
+                cronometro.setFormat("");
+                cronometro.start();
+                cronometro
+                        .setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+
+                            @Override
+                            public void onChronometerTick(Chronometer chronometer) {
+                                long time = SystemClock.elapsedRealtime() - chronometer.getBase();
+                                int h   = (int)(time /3600000);
+                                int m = (int)(time - h*3600000)/60000;
+                                int s= (int)((time - h*3600000- m*60000)/1000 )*-1;
+                                String ss = s < 10 ? ""+s: s+"";
+                                chronometer.setText(""+ss);
+
+                                if(ss.equalsIgnoreCase("0")){
+                                    cronometro.stop();
+
+                                    if (!empezarPrueba){
+                                        empezarPrueba=true;
+                                        cronometro.setBase(SystemClock.elapsedRealtime()+31*1000);
+                                        cronometro.start();
+                                    } else {
+                                        Intent intent = new Intent(Paso1.this, Paso2.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                        finish();
+                                        startActivity(intent);
+                                    }
+                                }
+
+
+
+
+                            }
+                        });
+            }
+        });
+        //
         dialog.show();
+
         //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         dialog.getWindow().setGravity(Gravity.BOTTOM);
@@ -143,6 +156,8 @@ public class Paso1 extends AppCompatActivity {
         dialog.setContentView(R.layout.popup_informacion);
         final View popup = getLayoutInflater().inflate(R.layout.popup_informacion,null);
         ViewGroup.LayoutParams lay =  popup.getLayoutParams();
+
+
 
         dialog.show();
         dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
