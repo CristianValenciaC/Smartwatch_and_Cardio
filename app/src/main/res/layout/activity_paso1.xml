@@ -41,6 +41,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/flecha_izquierda"
+        app:tint="@color/colorBotones"
+        android:scaleType="fitCenter"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
@@ -51,8 +53,25 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/botonatras"
         android:backgroundTint="@color/Principal"
+        app:tint="@color/colorBotones"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/flecha_derecha"
+        android:scaleType="fitCenter"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/infoButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="66dp"
+        android:backgroundTint="@color/Principal"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:srcCompat="@drawable/interrogation"
+        app:tint="@color/colorBotones"
         tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

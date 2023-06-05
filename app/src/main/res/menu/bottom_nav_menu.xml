@@ -4,12 +4,12 @@
 
     <item
         android:id="@+id/navigation_inicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:icon="@drawable/icono_inicio"
         android:state_checked="true"
         android:title="@string/titulo_inicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:labelVisibilityMode="unlabeled"/>
+        app:labelVisibilityMode="unlabeled" />
 
 
 
@@ -17,6 +17,7 @@
     <item
         android:id="@+id/navigation_historial"
         android:icon="@drawable/icono_historial"
+        android:tint="@color/colorBotones"
         android:title="@string/titulo_historial_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,6 +25,7 @@
 
     <item
         android:id="@+id/navigation_perfil"
+        android:tint="@color/colorBotones"
         android:icon="@drawable/icono_perfil"
         android:title="@string/titulo_perfil"
         android:layout_width="match_parent"
