@@ -36,6 +36,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     TextView registerBtnTextView;
 
     private DatabaseReference database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,10 +165,12 @@ public class IniciarSesionActivity extends AppCompatActivity {
                    }
                    if (!existe){
                        Log.i("base", "No existe usuario, creando");
+                       *
                        Map<String, Object> usuario = new HashMap<>();
                        usuario.put("nombre","manolo");
                        usuario.put("apellido","dominguez");
                        usuario.put("uid", uidUsuario);
+                       *
                        database.child("Usuario").push().setValue(usuario);
                    }
 */
@@ -178,9 +181,11 @@ public class IniciarSesionActivity extends AppCompatActivity {
                } else {
                    Log.i("base", "directamente no existen usuarios, creando primero");
                    Map<String, Object> usuario = new HashMap<>();
-                   usuario.put("nombre","manolo");
-                   usuario.put("apellido","dominguez");
                    usuario.put("uid", uidUsuario);
+                   usuario.put("nombreCompleto","manolo");
+                   usuario.put("edad",22);
+                   usuario.put("genero","m");
+
                     database.setValue("Usuario");
                    database.child("Usuario").push().setValue(usuario);
                }

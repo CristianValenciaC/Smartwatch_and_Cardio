@@ -7,7 +7,6 @@
         <item name="android:statusBarColor">@color/Principal</item>
         <item name="android:navigationBarColor">@color/Principal</item>
 
-
     </style>
 
     <style name="Theme.SmartwatchCardio" parent="Base.Theme.SmartwatchCardio" />

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,14 +22,18 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class Paso1 extends AppCompatActivity {
-
+    //variables del paso
     private ImageButton atrasButton;
     private ImageButton continuarButton;
-
-    private Button helpButton;
+    private ImageButton helpButton;
 
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+    //variables del infopopup
+
+    //variables del comprobar popup
+    private Button botonComprobar;
+    private boolean empezarPrueba = false;
     private  Chronometer simpleChronometer;
 
     @Override
@@ -36,12 +41,14 @@ public class Paso1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paso1);
 
-        atrasButton=findViewById(R.id.atrasButtonP7);
+
         simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
         simpleChronometer.start();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             simpleChronometer.setCountDown(true);
             simpleChronometer.setBase(SystemClock.elapsedRealtime()+6*1000);
+            simpleChronometer.setFormat("");
+
             simpleChronometer.start();
         }
         simpleChronometer
@@ -49,12 +56,37 @@ public class Paso1 extends AppCompatActivity {
 
                     @Override
                     public void onChronometerTick(Chronometer chronometer) {
-                        if( chronometer.getText().toString().equalsIgnoreCase("00:00"))
+                        long time = SystemClock.elapsedRealtime() - chronometer.getBase();
+                        int h   = (int)(time /3600000);
+                        int m = (int)(time - h*3600000)/60000;
+                        int s= (int)((time - h*3600000- m*60000)/1000 )*-1;
+                        String ss = s < 10 ? ""+s: s+"";
+                        chronometer.setText(""+ss);
+
+                        if(ss.equalsIgnoreCase("0")){
                             simpleChronometer.stop();
+
+                            if (!empezarPrueba){
+                                empezarPrueba=true;
+                                simpleChronometer.setBase(SystemClock.elapsedRealtime()+31*1000);
+                                simpleChronometer.start();
+                            }
+                        }
+
+
+
 
                     }
                 });
+        helpButton=findViewById(R.id.infoButton);
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                infoPop();
+            }
+        });
 
+        atrasButton=findViewById(R.id.atrasButtonP7);
         atrasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +97,7 @@ public class Paso1 extends AppCompatActivity {
         continuarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                simpleChronometer.stop();
+
                comprobacion();
                 //Intent intent = new Intent(Paso1.this, Paso2.class);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -82,7 +114,16 @@ public class Paso1 extends AppCompatActivity {
         dialog.setContentView(R.layout.popup_comprobacion);
         final View popup = getLayoutInflater().inflate(R.layout.popup_comprobacion,null);
         ViewGroup.LayoutParams lay =  popup.getLayoutParams();
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                // Realiza alguna acción cuando el diálogo se cierre
 
+                simpleChronometer.stop();
+                empezarPrueba=false;
+                // ...
+            }
+        });
         dialog.show();
         //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
@@ -95,5 +136,17 @@ public class Paso1 extends AppCompatActivity {
         //dialog.show();
     }
 
+    public void infoPop(){
 
+        final Dialog dialog = new Dialog(Paso1.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.popup_informacion);
+        final View popup = getLayoutInflater().inflate(R.layout.popup_informacion,null);
+        ViewGroup.LayoutParams lay =  popup.getLayoutParams();
+
+        dialog.show();
+        dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+        dialog.getWindow().setGravity(Gravity.END);
+
+    }
 }

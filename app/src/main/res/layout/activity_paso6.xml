@@ -41,6 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/flecha_izquierda"
+        android:scaleType="fitCenter"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
@@ -55,5 +56,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/flecha_derecha"
+        android:scaleType="fitCenter"
         tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

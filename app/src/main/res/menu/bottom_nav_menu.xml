@@ -4,13 +4,12 @@
 
     <item
         android:id="@+id/navigation_inicio"
-        android:icon="@drawable/icono_inicio"
-        android:tint="@color/colorBotones"
-        android:state_checked="true"
-        android:title="@string/titulo_inicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:labelVisibilityMode="unlabeled"/>
+        android:icon="@drawable/icono_inicio"
+        android:state_checked="true"
+        android:title="@string/titulo_inicio"
+        app:labelVisibilityMode="unlabeled" />
 
 
 

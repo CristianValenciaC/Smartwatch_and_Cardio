@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_inicio"
+    app:itemBackground="@android:color/transparent"
+
     >
 
     <fragment

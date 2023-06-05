@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:outlineProvider="bounds"
-    android:elevation="10dp">
+    android:elevation="1dp">
 
     <Space
         android:id="@+id/space"
@@ -29,16 +29,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
         android:layout_width="215dp"
         android:layout_height="93dp"
         android:layout_marginTop="168dp"
+        android:background="@drawable/cuadrado"
+        android:backgroundTint="@color/Principal"
+        android:fontFamily="@font/inter"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:srcCompat="@drawable/boton" />
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:text="Comprobar" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -46,7 +54,7 @@
         android:layout_height="107dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.0"
@@ -63,7 +71,7 @@
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
         app:layout_constraintHorizontal_bias="0.766"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -89,6 +97,6 @@
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
