@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authorizationwatch.Authorization">
+
+    <TextView
+        android:id="@+id/inicioSesion_text4"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:autoText="false"
+        android:fontFamily="@font/inter"
+        android:text="@string/mensaje_instrucciones"
+        android:textColor="#0097A7"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.206"
+        tools:ignore="Deprecated,TextSizeCheck,TextViewEdits" />
+
+    <TextView
+        android:id="@+id/inicioSesion_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="130dp"
+        android:autoText="false"
+        android:fontFamily="@font/inter"
+        android:text="@string/info_enlace"
+        android:textColor="#0097A7"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_open_browse"
+        tools:ignore="Deprecated,TextSizeCheck,TextViewEdits" />
+
+    <EditText
+        android:id="@+id/text_line_code"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="36dp"
+        android:autofillHints=""
+        android:background="@drawable/rounded_corner"
+        android:hint="@string/url_autorizacion"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColorHint="#00796B"
+        android:textSize="17sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inicioSesion_text3" />
+
+    <Button
+        android:id="@+id/button_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Principal"
+        android:text="@string/continuar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_line_code"
+        app:layout_constraintVertical_bias="0.279"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/button_open_browse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Principal"
+        android:text="@string/abrir_navegador"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inicioSesion_text4"
+        app:layout_constraintVertical_bias="0.178"
+        tools:ignore="TextContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
