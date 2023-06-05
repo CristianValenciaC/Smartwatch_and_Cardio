@@ -51,7 +51,7 @@
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inicioSesion_text"
-        android:autofillHints="" />
+        android:autofillHints=""/>
 
     <EditText
         android:id="@+id/password_edit_text"
@@ -67,7 +67,9 @@
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_edit_text"
-        android:autofillHints="" />
+        android:autofillHints=""
+        android:drawableRight="@drawable/visibility_off"
+        android:longClickable="false"/>
 
     <Button
         android:id="@+id/iniciarSesion_button"
