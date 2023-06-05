@@ -8,24 +8,43 @@
 
     <LinearLayout
         android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_height="700dp"
         android:orientation="vertical"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-
-            android:id="@+id/titulo_inicio"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/inter"
-            android:paddingStart="30dp"
-            android:paddingTop="20dp"
-            android:text="@string/titulo_perfil"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/titulo_inicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/inter"
+                android:text="Perfil"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+<!--
+ <ImageButton
+     android:id="@+id/menu_btn"
+     android:layout_width="36dp"
+     android:layout_height="36dp"
+     android:background="?attr/selectableItemBackgroundBorderless"
+     android:scaleX="1.2"
+     android:scaleY="1.2"
+     android:src="@drawable/logout"
+     tools:ignore="TouchTargetSizeCheck" /> -->
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
