@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +24,11 @@ import com.rob.smartwatchcardio.authorizationwatch.AuthorizationComprobate;
 public class IniciarSesionActivity extends AppCompatActivity {
 
     EditText emailEditText, passwordEditText;
+    boolean passwordVisibility;
     Button loginBtn;
     ProgressBar progressBar;
     TextView registerBtnTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,34 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
         loginBtn.setOnClickListener((v) -> loginUser());
         registerBtnTextView.setOnClickListener((v) -> startActivity(new Intent(IniciarSesionActivity.this, RegistroCuenta.class)));
+
+        passwordEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                final int Right = 2;
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    if(event.getRawX() >= passwordEditText.getRight() - passwordEditText.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = passwordEditText.getSelectionEnd();
+
+                        if(passwordVisibility){
+                            passwordEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_off, 0);
+                            passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisibility = false;
+
+                        }else{
+                            passwordEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                            passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisibility = true;
+                        }
+
+                        passwordEditText.setSelection(selection);
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
 
     }
 

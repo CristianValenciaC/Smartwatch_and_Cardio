@@ -28,7 +28,7 @@
         android:fontFamily="@font/inter"
         android:gravity="center"
         android:text="@string/iniciar_sesion_text_view"
-        android:textColor="#0097A7"
+        android:textColor="@color/Principal"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,6 @@
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:autofillHints=""
         android:background="@drawable/rounded_corner"
         android:hint="@string/email_edit_text"
         android:inputType="textEmailAddress"
@@ -50,7 +49,8 @@
         android:textSize="17sp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inicioSesion_text" />
+        app:layout_constraintTop_toBottomOf="@+id/inicioSesion_text"
+        android:autofillHints=""/>
 
     <EditText
         android:id="@+id/password_edit_text"
