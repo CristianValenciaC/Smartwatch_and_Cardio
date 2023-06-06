@@ -56,11 +56,12 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="ya_tienes_una_cuenta_text">¿Ya tienes una cuenta?</string>
+    <string name="ya_tienes_una_cuenta_text">¿Ya tienes una cuenta? </string>
     <string name="register_text_view_btn">Inicia sesión</string>
-    <string name="create_account_btn">Crear cuenta</string>
+    <string name="create_account_btn">CREAR CUENTA</string>
+    <string name="login_btn">INICIAR SESIÓN</string>
     <string name="gender_text_view">Sexo</string>
-    <string name="iniciar_sesion_text_view">Iniciar sesión</string>
+    <string name="iniciar_sesion_text_view">Inicio de sesión</string>
     <string name="email_edit_text">Email</string>
     <string name="password_edit_text">Contraseña</string>
     <string name="no_tienes_una_cuenta_text">¿No tienes una cuenta?</string>

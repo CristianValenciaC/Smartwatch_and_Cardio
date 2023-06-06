@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,18 +28,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import com.rob.smartwatchcardio.authorizationwatch.AuthorizationComprobate;
 
 public class IniciarSesionActivity extends AppCompatActivity {
 
-    EditText emailEditText, passwordEditText;
-    boolean passwordVisibility;
-    Button loginBtn;
-    ProgressBar progressBar;
-    TextView registerBtnTextView;
-
+    private EditText emailEditText, passwordEditText;
+    private boolean passwordVisibility;
+    private Button loginBtn;
+    private ProgressBar progressBar;
+    private TextView registerBtnTextView;
     private DatabaseReference database;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,177 +53,120 @@ public class IniciarSesionActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar);
         registerBtnTextView = findViewById(R.id.register_text_view_btn);
 
-        loginBtn.setOnClickListener((v) -> loginUser());
-        registerBtnTextView.setOnClickListener((v) -> startActivity(new Intent(IniciarSesionActivity.this, RegistroCuenta.class)));
+        loginBtn.setOnClickListener(v -> loginUser());
+        registerBtnTextView.setOnClickListener(v -> startActivity(new Intent(IniciarSesionActivity.this, RegistroCuenta.class)));
 
-        passwordEditText.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                final int Right = 2;
-                if(event.getAction() == MotionEvent.ACTION_UP){
-                    if(event.getRawX() >= passwordEditText.getRight() - passwordEditText.getCompoundDrawables()[Right].getBounds().width()){
-                        int selection = passwordEditText.getSelectionEnd();
+        passwordEditText.setOnTouchListener((view, event) -> {
+            final int Right = 2;
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                if (event.getRawX() >= passwordEditText.getRight() - passwordEditText.getCompoundDrawables()[Right].getBounds().width()) {
+                    int selection = passwordEditText.getSelectionEnd();
 
-                        if(passwordVisibility){
-                            passwordEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_off, 0);
-                            passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                            passwordVisibility = false;
-
-                        }else{
-                            passwordEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
-                            passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                            passwordVisibility = true;
-                        }
-
-                        passwordEditText.setSelection(selection);
-                        return true;
+                    if (passwordVisibility) {
+                        passwordEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_off, 0);
+                        passwordEditText.setTransformationMethod(android.text.method.PasswordTransformationMethod.getInstance());
+                        passwordVisibility = false;
+                    } else {
+                        passwordEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                        passwordEditText.setTransformationMethod(android.text.method.HideReturnsTransformationMethod.getInstance());
+                        passwordVisibility = true;
                     }
+
+                    passwordEditText.setSelection(selection);
+                    return true;
                 }
-
-                return false;
             }
-        });
 
+            return false;
+        });
     }
 
-    void loginUser(){
-
+    private void loginUser() {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
         boolean isValidated = validateData(email, password);
 
-        if(!isValidated){
+        if (!isValidated) {
             return;
         }
 
         loginAccountInFirebase(email, password);
     }
 
-    void loginAccountInFirebase(String email, String password){
+    private void loginAccountInFirebase(String email, String password) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         changeInProgress(true);
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener((new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                changeInProgress(false);
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            changeInProgress(false);
 
-                if(task.isSuccessful()){
-                    //Login correcto
-
-                    if(firebaseAuth.getCurrentUser().isEmailVerified()){
-
-                        //Ir al inicio de la aplicacion
-                        guardarUsuario(firebaseAuth);
-                        startActivity(new Intent(IniciarSesionActivity.this, InicioPrincipal.class));
-                        //Ir al inicio de la aplicacion y comprobar que el acceso al reloj es correcto
-                        Intent i = new Intent(IniciarSesionActivity.this, AuthorizationComprobate.class);
-                        i.putExtra("stage", 0);
-                        startActivity(i);
-
-                    }else{
-                        Utility.showToast(IniciarSesionActivity.this, "El email no ha sido verificado. Por favor, revisa tu correo");
-                    }
-
-                }else{
-                    //Fallo en el login
-                    Utility.showToast(IniciarSesionActivity.this, task.getException().getLocalizedMessage());
-
+            if (task.isSuccessful()) {
+                // Login correcto
+                if (firebaseAuth.getCurrentUser().isEmailVerified()) {
+                    // Ir al inicio de la aplicacion
+                    guardarUsuario(firebaseAuth);
+                    startActivity(new Intent(IniciarSesionActivity.this, InicioPrincipal.class));
+                    // Ir al inicio de la aplicacion y comprobar que el acceso al reloj es correcto
+                    Intent i = new Intent(IniciarSesionActivity.this, AuthorizationComprobate.class);
+                    i.putExtra("stage", 0);
+                    startActivity(i);
+                } else {
+                    Utility.showToast(IniciarSesionActivity.this, "El email no ha sido verificado. Por favor, revisa tu correo");
                 }
+            } else {
+                // Fallo en el login
+                Utility.showToast(IniciarSesionActivity.this, task.getException().getLocalizedMessage());
             }
-        }));
+        });
     }
 
-    /**
-     * Este metodo ocultara o no el elemento ProgressBar cuando
-     * se este procesando la petición
-     * @param inProgress
-     */
-    void changeInProgress(boolean inProgress){
-
-        if(inProgress){
+    private void changeInProgress(boolean inProgress) {
+        if (inProgress) {
             progressBar.setVisibility(View.VISIBLE);
             loginBtn.setVisibility(View.GONE);
-
-        }else{
+        } else {
             progressBar.setVisibility(View.GONE);
             loginBtn.setVisibility(View.VISIBLE);
         }
     }
 
-    /**
-     * Metodo para validar los datos de entrada de un usuario
-     * @param email
-     * @param password
-     * @return true o false dependiendo de si la validacion es correcta
-     */
-    boolean validateData(String email, String password){
-
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+    private boolean validateData(String email, String password) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emailEditText.setError("Email incorrecto");
-
             return false;
         }
 
-        if(password.length() < 6 ){
+        if (password.length() < 6) {
             passwordEditText.setError("La contraseña debe tener al menos 6 caracteres");
-
             return false;
         }
 
         return true;
     }
-    void guardarUsuario(FirebaseAuth firebaseAuth){
+
+    private void guardarUsuario(FirebaseAuth firebaseAuth) {
         FirebaseUser usuario = firebaseAuth.getCurrentUser();
         String uidUsuario = usuario.getUid();
 
-        database.child("Usuario").addValueEventListener(new ValueEventListener() {
+        database.child("Usuario").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               boolean existe = false;
-                //verificar si existe usuarios
-               if (dataSnapshot.exists()){
-                    //buscar usuario para saber si existe
-                   existeUsuarioBase(uidUsuario);
-                  Log.i("base",  "a");
+                boolean existe = false;
 
-                   /*esto funciona para crear pero no llega a reconocer que existe ya
-                   * for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                       String uid = ds.child("uid").getValue().toString();
-                        // si existe lo detenemos
-                       if (uid == uidUsuario){
-                           Log.i("base", "usuario existe");
-                          existe= true;
-                          break;
-                       }
-
-                   }
-                   if (!existe){
-                       Log.i("base", "No existe usuario, creando");
-                       *
-                       Map<String, Object> usuario = new HashMap<>();
-                       usuario.put("nombre","manolo");
-                       usuario.put("apellido","dominguez");
-                       usuario.put("uid", uidUsuario);
-                       *
-                       database.child("Usuario").push().setValue(usuario);
-                   }
-*/
-
-
-
-
-               } else {
-                   Log.i("base", "directamente no existen usuarios, creando primero");
-                   Map<String, Object> usuario = new HashMap<>();
-                   usuario.put("uid", uidUsuario);
-                   usuario.put("nombreCompleto","manolo");
-                   usuario.put("edad",22);
-                   usuario.put("genero","m");
+                if (dataSnapshot.exists()) {
+                    existeUsuarioBase(uidUsuario);
+                    Log.i("base", "a");
+                } else {
+                    Log.i("base", "directamente no existen usuarios, creando primero");
+                    Map<String, Object> usuario = new HashMap<>();
+                    usuario.put("uid", uidUsuario);
+                    usuario.put("nombreCompleto", "manolo");
+                    usuario.put("edad", 22);
+                    usuario.put("genero", "m");
 
                     database.setValue("Usuario");
-                   database.child("Usuario").push().setValue(usuario);
-               }
+                    database.child("Usuario").push().setValue(usuario);
+                }
             }
 
             @Override
@@ -234,11 +174,9 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
-    void existeUsuarioBase(String uidUsuario){
+
+    private void existeUsuarioBase(String uidUsuario) {
         Query query = database.child("Usuario").orderByChild("uid").equalTo(uidUsuario).limitToFirst(1);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
