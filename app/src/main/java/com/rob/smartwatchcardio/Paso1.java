@@ -1,16 +1,12 @@
 package com.rob.smartwatchcardio;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.Gravity;
@@ -21,7 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class Paso1 extends AppCompatActivity {
     //variables del paso
@@ -32,11 +28,18 @@ public class Paso1 extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     //variables del infopopup
+    private TextView TVInformacion;
+    private String textoInformacion = "Aqui va la informacion del paso 1";
 
     //variables del comprobar popup
     private Button botonComprobar;
     private boolean empezarPrueba = false;
     private Chronometer cronometro;
+
+    //seguro increiblemente necesario
+
+    private Button regresar,cerrar;
+
 
 
     @Override
@@ -55,7 +58,7 @@ public class Paso1 extends AppCompatActivity {
         atrasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
         continuarButton=findViewById(R.id.continuarButtonP7);
@@ -100,6 +103,7 @@ public class Paso1 extends AppCompatActivity {
                 cronometro.setCountDown(true);
                 cronometro.setBase(SystemClock.elapsedRealtime()+6*1000);
                 cronometro.setFormat("");
+                cronometro.setText("5");
                 cronometro.start();
                 cronometro
                         .setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
@@ -157,6 +161,8 @@ public class Paso1 extends AppCompatActivity {
         final View popup = getLayoutInflater().inflate(R.layout.popup_informacion,null);
         ViewGroup.LayoutParams lay =  popup.getLayoutParams();
 
+        TVInformacion = dialog.findViewById(R.id.textoInfo);
+        TVInformacion.setText(textoInformacion);
 
 
         dialog.show();
@@ -164,4 +170,40 @@ public class Paso1 extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.END);
 
     }
+
+    public void seguroVolver(){
+        final Dialog dialog = new Dialog(Paso1.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.popup_seguro_cerrado);
+        final View popup = getLayoutInflater().inflate(R.layout.popup_seguro_cerrado,null);
+        ViewGroup.LayoutParams lay =  popup.getLayoutParams();
+        regresar=  dialog.findViewById(R.id.regresarbtn);
+        cerrar =dialog.findViewById(R.id.cerrarBtn);
+
+        regresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        cerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        seguroVolver();
+
+    }
+
+
 }

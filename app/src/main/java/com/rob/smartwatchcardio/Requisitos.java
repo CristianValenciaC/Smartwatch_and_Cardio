@@ -23,7 +23,7 @@ public class Requisitos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                onBackPressed();
+
 
             }
         });
@@ -32,7 +32,7 @@ public class Requisitos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Requisitos.this, Comprobacion.class);
-
+                finish();
                 startActivity(intent);
 
             }
