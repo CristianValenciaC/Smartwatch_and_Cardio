@@ -118,7 +118,6 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
                         //Ir al inicio de la aplicacion
                         guardarUsuario(firebaseAuth);
-                        startActivity(new Intent(IniciarSesionActivity.this, InicioPrincipal.class));
                         //Ir al inicio de la aplicacion y comprobar que el acceso al reloj es correcto
                         Intent i = new Intent(IniciarSesionActivity.this, AuthorizationComprobate.class);
                         i.putExtra("stage", 0);
