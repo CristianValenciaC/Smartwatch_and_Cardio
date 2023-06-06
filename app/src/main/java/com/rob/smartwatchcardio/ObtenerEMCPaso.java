@@ -143,7 +143,7 @@ public class ObtenerEMCPaso extends AppCompatActivity {
 
                             try {
                                 w.write("Dato de la grafica del paso: " + paso + "\n");
-                                w.write("Dato de la grafica del paso: " + paso + "\n");
+                                w.write("Media latidos del corazon por minuto: " + media_lpm + "\n");
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
