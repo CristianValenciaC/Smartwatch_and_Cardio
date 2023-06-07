@@ -5,11 +5,14 @@ import static android.os.Environment.getExternalStoragePublicDirectory;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.rob.smartwatchcardio.retrofit.APIRequest;
@@ -43,6 +46,7 @@ public class ObtenerEMCPaso extends AppCompatActivity {
     private int media_lpm;
     private int signalid;
     private List<Integer> result;
+    private FirebaseUser currentUser;
 
     private Environments globalVariable;
 
@@ -65,8 +69,9 @@ public class ObtenerEMCPaso extends AppCompatActivity {
         Retrofit retrofit = RetrofitInstance.getRetrofit();
 
         APIRequest apiInterface = retrofit.create(APIRequest.class);
+        SharedPreferences pref = getSharedPreferences(currentUser.getUid(), Context.MODE_PRIVATE);
         globalVariable.setAction("list");
-        globalVariable.setAccess_token(getIntent().getExtras().getString("token"));
+        globalVariable.setAccess_token(pref.getString("access_token", ""));
 
         Call<ObtainRequest> lista = apiInterface.getECM("Bearer " + globalVariable.getAccess_token(), globalVariable.getAction());
 

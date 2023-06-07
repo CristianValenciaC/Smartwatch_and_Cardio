@@ -2,9 +2,13 @@ package com.rob.smartwatchcardio.authorizationwatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.JsonObject;
 import com.rob.smartwatchcardio.InicioPrincipal;
 import com.rob.smartwatchcardio.R;
@@ -26,11 +30,14 @@ public class AuthorizationComprobate extends AppCompatActivity {
     private Environments globalVariable;
     private int stage;
 
+    private FirebaseUser currentUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorization_comprobate);
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         stage = getIntent().getExtras().getInt("stage", 0);
         try {
@@ -62,6 +69,13 @@ public class AuthorizationComprobate extends AppCompatActivity {
 
                 if(response.body().getStatus() == 0){
                     JsonObject array = response.body().getBody();
+
+                    SharedPreferences pref = getSharedPreferences(currentUser.getUid(), Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("access_token", array.get("access_token").getAsString());
+                    editor.putString("refresh_token", array.get("refresh_token").getAsString());
+                    editor.apply();
+
                     globalVariable.setAccess_token(array.get("access_token").getAsString());
                     globalVariable.setRefresh_token(array.get("refresh_token").getAsString());
                     if(stage == 0){
@@ -96,6 +110,11 @@ public class AuthorizationComprobate extends AppCompatActivity {
             public void onResponse(Call<ObtainRequest> call, Response<ObtainRequest> response) {
                 if(response.body().getStatus() == 0){
                     JsonObject array = response.body().getBody();
+                    SharedPreferences pref = getSharedPreferences(currentUser.getUid(), Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("access_token", array.get("access_token").getAsString());
+                    editor.putString("refresh_token", array.get("refresh_token").getAsString());
+                    editor.apply();
                     globalVariable.setAccess_token(array.get("access_token").getAsString());
                     globalVariable.setRefresh_token(array.get("refresh_token").getAsString());
                     startActivity(new Intent(AuthorizationComprobate.this, AuthorizationTrue.class));
