@@ -7,8 +7,9 @@
     tools:context=".authorizationwatch.AuthorizationTrue">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="268dp"
+        android:layout_height="wrap_content"
         android:layout_margin="25dp"
         android:background="@drawable/cuadrado"
         android:orientation="vertical"
@@ -20,7 +21,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="135dp"
+            android:layout_height="125dp"
             android:paddingTop="20dp"
             android:src="@drawable/tick_sinfondo" />
 
@@ -28,6 +29,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/inter"
             android:text="@string/autorizacion_existosa"
             android:textAlignment="center"
@@ -42,6 +44,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:fontFamily="@font/inter"
             android:text="@string/mensaje_exito"
             android:textAlignment="center"
@@ -53,14 +56,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/Principal"
         android:text="@string/empecemos"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.955"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:ignore="TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
