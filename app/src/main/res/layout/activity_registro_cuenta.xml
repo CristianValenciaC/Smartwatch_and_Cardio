@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="32dp"
+    android:gravity="center_horizontal"
+    tools:context=".RegistroCuenta">
+
+    <ImageView
+        android:id="@+id/create_account_icon"
+        android:layout_width="145dp"
+        android:layout_height="134dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="0dp"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_account_icon"
+        android:id="@+id/welcome_text"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/inicioSesion_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registrarse_text_view"
+            android:textColor="@color/Principal"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/form_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome_text"
+        android:layout_marginVertical="3dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/nombrecompleto_edit_text"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nombre_completo_edit_text"
+            android:textSize="15sp"
+            android:background="@drawable/rounded_corner"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"/>
+
+
+        <EditText
+            android:id="@+id/email_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_edit_text"
+            android:textSize="15sp"
+            android:background="@drawable/rounded_corner"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/password_edit_text"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_edit_text"
+            android:drawableRight="@drawable/visibility_off"
+            android:textSize="15sp"
+            android:background="@drawable/rounded_corner"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/confirmPassword_edit_text"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_password_edit_text"
+            android:drawableRight="@drawable/visibility_off"
+            android:textSize="15sp"
+            android:background="@drawable/rounded_corner"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/edad_edit_text"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edad_edit_text"
+            android:textSize="15sp"
+            android:background="@drawable/rounded_corner"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:id="@+id/sexo_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/inter"
+            android:text="@string/gender_text_view"
+            android:textColor="#ADADAD"
+            android:textSize="15sp"
+            android:textStyle="normal"/>
+
+        <Spinner
+            android:id="@+id/gender_spinner"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_corner"
+            app:layout_constraintStart_toStartOf="@+id/sexo_text"
+            app:layout_constraintTop_toBottomOf="@+id/sexo_text"
+            tools:ignore="TouchTargetSizeCheck" />
+
+
+        <Button
+            android:id="@+id/createAccount_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginVertical="25dp"
+            android:backgroundTint="@color/Principal"
+            android:text="@string/create_account_btn" />
+
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="184dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createAccount_button"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/form_layout"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/login_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ya_tienes_una_cuenta_text"/>
+
+        <TextView
+            android:id="@+id/register_text_view_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/register_text_view_btn"
+            android:paddingStart="5dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
