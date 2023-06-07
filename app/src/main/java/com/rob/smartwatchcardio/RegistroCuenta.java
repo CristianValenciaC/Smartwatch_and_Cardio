@@ -21,27 +21,41 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistroCuenta extends AppCompatActivity {
 
-    private EditText emailEditText, passwordEditText, confirmPasswordEditText, nombreCompletoEditText, edadEditText;
+    // VARIABLES CON REF A LOS CAMPOS
+    private EditText nombreCompletoEditText, emailEditText, passwordEditText, confirmPasswordEditText, edadEditText;
     private boolean passwordVisibility;
     private Spinner genderSpinner;
     private Button createAccountBtn;
     private ProgressBar progressBar;
     private TextView loginBtnTextView;
 
+    // VARIABLES DE DATOS A REGISTRAR EN FIREBASE
+    private String nombreCompleto, email, password, confirmPassword, edad, sexo;
+
+    // VARIABLES PARA LA AUTENTICACIÓN EN FIREBASE
+    FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_cuenta);
 
+        nombreCompletoEditText = findViewById(R.id.nombrecompleto_edit_text);
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         confirmPasswordEditText = findViewById(R.id.confirmPassword_edit_text);
-        nombreCompletoEditText = findViewById(R.id.nombrecompleto_edit_text);
         edadEditText = findViewById(R.id.edad_edit_text);
         genderSpinner = findViewById(R.id.gender_spinner);
+
         createAccountBtn = findViewById(R.id.createAccount_button);
         progressBar = findViewById(R.id.progress_bar);
         loginBtnTextView = findViewById(R.id.register_text_view_link);
@@ -87,23 +101,27 @@ public class RegistroCuenta extends AppCompatActivity {
     }
 
     private void createAccount() {
-        String email = emailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        String confirmPassword = confirmPasswordEditText.getText().toString();
-        String nombreCompleto = nombreCompletoEditText.getText().toString();
-        String edadString = edadEditText.getText().toString();
+        nombreCompleto = nombreCompletoEditText.getText().toString();
+        email = emailEditText.getText().toString();
+        password = passwordEditText.getText().toString();
+        confirmPassword = confirmPasswordEditText.getText().toString();
+        edad = edadEditText.getText().toString();
+        sexo = genderSpinner.getSelectedItem().toString();
 
-        if (!validateData(email, password, confirmPassword, nombreCompleto, edadString)) {
+        if (!validateData(email, password, confirmPassword, nombreCompleto, edad, sexo)) {
             return;
         }
 
-        createAccountInFirebase(email, password);
+        createAccountInFirebase(nombreCompleto, email, password, edad, sexo);
     }
 
-    private void createAccountInFirebase(String email, String password) {
+    private void createAccountInFirebase(String nombreCompleto, String email, String password, String edad, String sexo) {
         changeInProgress(true);
 
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        // Validación de credenciales del usuario en Firebase
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistroCuenta.this,
                 task -> {
                     if (task.isSuccessful()) {
@@ -111,7 +129,30 @@ public class RegistroCuenta extends AppCompatActivity {
                         Utility.showToast(RegistroCuenta.this, "Cuenta creada correctamente, revise su correo para verificar la cuenta");
                         firebaseAuth.getCurrentUser().sendEmailVerification();
                         firebaseAuth.signOut();
-                        finish();
+
+                        String idUserFirebase = firebaseAuth.getCurrentUser().getUid();
+
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("nombre_completo", nombreCompleto);
+                        map.put("email", email);
+                        map.put("password", password);
+                        map.put("edad", edad);
+                        map.put("sexo", sexo);
+
+                        // Validación en la creación del user en Firebase
+                        databaseReference.child("Users").child(idUserFirebase).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task2) {
+                                if(task2.isSuccessful()){
+                                    startActivity(new Intent(RegistroCuenta.this, InicioPrincipal.class));
+                                    finish();
+
+                                }else{
+                                    Utility.showToast(RegistroCuenta.this, "No se pudieron registrar los datos correctamente");
+                                }
+                            }
+                        });
+
                     } else {
                         //Fallo en crear la cuenta
                         Utility.showToast(RegistroCuenta.this, task.getException().getLocalizedMessage());
@@ -129,7 +170,7 @@ public class RegistroCuenta extends AppCompatActivity {
         }
     }
 
-    private boolean validateData(String email, String password, String confirmPassword, String nombreCompleto, String edadString) {
+    private boolean validateData(String email, String password, String confirmPassword, String nombreCompleto, String edadString, String genderString) {
         if (nombreCompleto.isEmpty()) {
             nombreCompletoEditText.setError("Ingrese su nombre completo");
             return false;
@@ -158,6 +199,11 @@ public class RegistroCuenta extends AppCompatActivity {
         int edad = Integer.parseInt(edadString);
         if (edad <= 0) {
             edadEditText.setError("Edad incorrecta");
+            return false;
+        }
+
+        if (genderString.isEmpty()) {
+            edadEditText.setError("Ingrese su sexo");
             return false;
         }
 
