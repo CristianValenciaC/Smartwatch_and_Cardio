@@ -27,10 +27,13 @@
         android:background="@color/Principal"
         app:itemIconSize="40dp"
         app:labelVisibilityMode="selected"
+        app:itemActiveIndicatorStyle="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:itemActiveIndicatorStyle="@android:color/transparent"
+
         app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!---->

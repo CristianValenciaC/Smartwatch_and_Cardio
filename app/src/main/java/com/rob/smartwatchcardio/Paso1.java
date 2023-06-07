@@ -29,7 +29,15 @@ public class Paso1 extends AppCompatActivity {
     private AlertDialog dialog;
     //variables del infopopup
     private TextView TVInformacion;
-    private String textoInformacion = "Aqui va la informacion del paso 1";
+    private String textoInformacion = "Siguiendo como referencia la imagen de arriba: \n" +
+            "\n" +
+            "1º Coloca tus manos con las palmas hacia abajo.\n" +
+            "\n" +
+            "2º Toma tu smartwatch y colócalo en tu muñeca izquierda.\n" +
+            "\n" +
+            "3º Asegúrate de colocarlo en la misma posición en la que generalmente tomas tu presión arterial o mides tu pulso.\n" +
+            "\n" +
+            "4º Cuando estés listo presiona el botón de abajo.";
 
     //variables del comprobar popup
     private Button botonComprobar;
