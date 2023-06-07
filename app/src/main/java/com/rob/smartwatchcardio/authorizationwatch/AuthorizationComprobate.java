@@ -93,7 +93,7 @@ public class AuthorizationComprobate extends AppCompatActivity {
                     }
                 }else{
                     //TODO CAMBIAR A ACTIVIDAD FALLIDA
-                    startActivity(new Intent(AuthorizationComprobate.this, InicioPrincipal.class));
+                    startActivity(new Intent(AuthorizationComprobate.this, AuthorizationFalse.class));
                 }
             }
 
