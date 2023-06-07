@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.gson.JsonObject;
+import com.rob.smartwatchcardio.IniciarSesionActivity;
 import com.rob.smartwatchcardio.InicioPrincipal;
 import com.rob.smartwatchcardio.R;
 import com.rob.smartwatchcardio.retrofit.APIRequest;
@@ -68,7 +69,8 @@ public class AuthorizationComprobate extends AppCompatActivity {
                         startActivity(new Intent(AuthorizationComprobate.this, InicioPrincipal.class));
                     }
                 }else{
-                    startActivity(new Intent(AuthorizationComprobate.this, AuthorizationFalse.class));
+                    //TODO CAMBIAR A ACTIVIDAD FALLIDA
+                    startActivity(new Intent(AuthorizationComprobate.this, InicioPrincipal.class));
                 }
             }
 

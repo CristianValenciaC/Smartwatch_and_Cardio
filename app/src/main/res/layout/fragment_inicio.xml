@@ -66,7 +66,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="268dp"
+            android:layout_height="240dp"
             android:layout_margin="30dp"
             android:background="@drawable/cuadrado"
             android:orientation="vertical">
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
-                android:text="TextView"
+                android:text="Prueba 1"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
-                android:text="El resultado del text indica que lorem ipsumlorem mayo"
+                android:text="Resultado de la última prueba realizada"
                 android:textAlignment="center"
                 android:textSize="16sp" />
         </LinearLayout>
