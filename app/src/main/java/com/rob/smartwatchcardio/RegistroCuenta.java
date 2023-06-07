@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,8 +22,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,8 +46,8 @@ public class RegistroCuenta extends AppCompatActivity {
     private String nombreCompleto, email, password, confirmPassword, edad, sexo;
 
     // VARIABLES PARA LA AUTENTICACIÓN EN FIREBASE
-    FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,9 @@ public class RegistroCuenta extends AppCompatActivity {
 
         setupPasswordVisibilityListener(passwordEditText);
         setupPasswordVisibilityListener(confirmPasswordEditText);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance("https://smartwatch-and-cardio-default-rtdb.europe-west1.firebasedatabase.app").getReference();
     }
 
     private void setupPasswordVisibilityListener(EditText editText) {
@@ -118,28 +126,49 @@ public class RegistroCuenta extends AppCompatActivity {
     private void createAccountInFirebase(String nombreCompleto, String email, String password, String edad, String sexo) {
         changeInProgress(true);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        // Validar si el usuario ya existe
+        Query userQuery = databaseReference.child("Users").orderByChild("email").equalTo(email);
 
+        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // El usuario ya existe en la base de datos
+                    Utility.showToast(RegistroCuenta.this, "El usuario ya está registrado");
+                    changeInProgress(false);
+                } else {
+                    // Crear el usuario en Firebase
+                    createUserInFirebase(nombreCompleto, email, edad, sexo);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Error al consultar la base de datos
+                Utility.showToast(RegistroCuenta.this, "Error al consultar la base de datos");
+                changeInProgress(false);
+            }
+        });
+    }
+
+    private void createUserInFirebase(String nombreCompleto, String email, String edad, String sexo) {
         // Validación de credenciales del usuario en Firebase
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistroCuenta.this,
                 task -> {
                     if (task.isSuccessful()) {
                         //La creacion de cuenta ha terminado
-                        Utility.showToast(RegistroCuenta.this, "Cuenta creada correctamente, revise su correo para verificar la cuenta");
-                        firebaseAuth.getCurrentUser().sendEmailVerification();
-                        firebaseAuth.signOut();
+                        Utility.showToast(RegistroCuenta.this, "Cuenta creada correctamente");
+                        //firebaseAuth.getCurrentUser().sendEmailVerification();
 
                         String idUserFirebase = firebaseAuth.getCurrentUser().getUid();
 
                         Map<String, Object> map = new HashMap<>();
                         map.put("nombre_completo", nombreCompleto);
                         map.put("email", email);
-                        map.put("password", password);
                         map.put("edad", edad);
                         map.put("sexo", sexo);
 
-                        // Validación en la creación del user en Firebase
+                        // Agregar el usuario a la base de datos
                         databaseReference.child("Users").child(idUserFirebase).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task2) {
@@ -150,12 +179,15 @@ public class RegistroCuenta extends AppCompatActivity {
                                 }else{
                                     Utility.showToast(RegistroCuenta.this, "No se pudieron registrar los datos correctamente");
                                 }
+
+                                changeInProgress(false);
                             }
                         });
 
                     } else {
                         //Fallo en crear la cuenta
                         Utility.showToast(RegistroCuenta.this, task.getException().getLocalizedMessage());
+                        changeInProgress(false);
                     }
                 });
     }
