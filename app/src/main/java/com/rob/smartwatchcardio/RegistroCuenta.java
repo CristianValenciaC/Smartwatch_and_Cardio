@@ -47,7 +47,7 @@ public class RegistroCuenta extends AppCompatActivity {
 
     // VARIABLES PARA LA AUTENTICACIÓN EN FIREBASE
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
+        private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
