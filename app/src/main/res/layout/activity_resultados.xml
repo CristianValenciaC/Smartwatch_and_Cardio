@@ -16,7 +16,7 @@
         android:backgroundTint="@color/Principal"
         android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/volverBtn"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/icono_inicio_relleno"
@@ -24,7 +24,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
+        android:id="@+id/volverBtn"
         android:layout_width="187dp"
         android:layout_height="74dp"
         android:layout_marginBottom="16dp"
@@ -40,14 +40,15 @@
         app:layout_constraintHorizontal_bias="0.593"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck"
-        tools:text="Comprobar" />
+        tools:text="Comprobar"
+        android:text="Comprobar"/>
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="295dp"
         android:layout_height="288dp"
         android:layout_marginTop="88dp"
-        android:text="Congratulations, sufres de un infarto tipo 3. \n suelen sufrirlo los estudiantes que ven el examen de ebau despues de estar 40 minutos esperando en silencio y quietos por el examen"
+        android:text="El día que lo iban a matar, Santiago Nasar se levantó a las 5.30 de la mañana para esperar el buque en que llegaba el obispo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"

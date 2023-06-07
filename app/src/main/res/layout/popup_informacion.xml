@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/textoInfo"
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_marginTop="10dp"
@@ -40,7 +40,6 @@
         android:paddingStart="20dp"
         android:paddingEnd="5dp"
         android:paddingBottom="10dp"
-        android:text="Explicacion increiblemente cientifica \n\n1.-practicas.\n2.-Lloros.\n4.-No te lo tomes enserio, de verdad. \n5.- solo es una prueba de tamaño. Por cierto, y el paso 3?"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,6 +41,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView registerBtnTextView;
     private DatabaseReference database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
             return false;
         });
+
     }
 
     private void loginUser() {
@@ -110,6 +114,27 @@ public class IniciarSesionActivity extends AppCompatActivity {
             } else {
                 // Fallo en el login
                 Utility.showToast(IniciarSesionActivity.this, task.getException().getLocalizedMessage());
+                if(task.isSuccessful()){
+                    //Login correcto
+
+                    if(firebaseAuth.getCurrentUser().isEmailVerified()){
+
+                        //Ir al inicio de la aplicacion
+                        guardarUsuario(firebaseAuth);
+                        //Ir al inicio de la aplicacion y comprobar que el acceso al reloj es correcto
+                        Intent i = new Intent(IniciarSesionActivity.this, AuthorizationComprobate.class);
+                        i.putExtra("stage", 0);
+                        startActivity(i);
+
+                    }else{
+                        Utility.showToast(IniciarSesionActivity.this, "El email no ha sido verificado. Por favor, revisa tu correo");
+                    }
+
+                }else{
+                    //Fallo en el login
+                    Utility.showToast(IniciarSesionActivity.this, task.getException().getLocalizedMessage());
+
+                }
             }
         });
     }
@@ -133,6 +158,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
         if (password.length() < 6) {
             passwordEditText.setError("La contraseña debe tener al menos 6 caracteres");
+
             return false;
         }
 
@@ -169,6 +195,9 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
             }
         });
+
+
+
     }
 
     private void existeUsuarioBase(String uidUsuario) {
