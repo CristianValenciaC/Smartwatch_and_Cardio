@@ -85,4 +85,5 @@
     <string name="mensaje_fallifo">La autorizacion con el reloj aún no se ha realizado o ha fallado</string>
     <string name="info_enlace">Introduce el enlace de la autorización</string>
     <string name="mensaje_instrucciones">Para la autorización, necesita darle a ese botón , donde se le abriá un navegador donde tendras que inicar sesión con una cuenta Withings. Una vez aceptado, copia la url de la autorización y pegala en Url Autorizacion. Ese codigo de autenticación es de 30 segundos, sino, tendrás que hacerlo de nuevo</string>
+    <string name="text_info_emc">Obteniendo informacion del resultado</string>
 </resources>

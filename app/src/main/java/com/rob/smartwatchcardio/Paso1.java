@@ -121,7 +121,8 @@ public class Paso1 extends AppCompatActivity {
                                         cronometro.setBase(SystemClock.elapsedRealtime()+31*1000);
                                         cronometro.start();
                                     } else {
-                                        Intent intent = new Intent(Paso1.this, Paso2.class);
+                                        Intent intent = new Intent(Paso1.this, ObtenerEMCPaso.class);
+                                        intent.putExtra("paso", 1);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                                         finish();
                                         startActivity(intent);
