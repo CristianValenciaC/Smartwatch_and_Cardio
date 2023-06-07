@@ -25,8 +25,8 @@ public interface APIRequest {
     Call<ObtainRequest> refreshAccessToken(@Query("action")String getNonce,
                                            @Query("client_id")String idApp,
                                            @Query("client_secret")String secret,
-                                           @Query("refresh_token")String authorization_code,
-                                           @Query("redirect_uri") String url);
+                                           @Query("grant_type")String authorization_code,
+                                           @Query("refresh_token") String url);
     @POST("v2/heart")
     Call<ObtainRequest> getSignalIdData(@Header("Authorization") String access_tokenBeard,
                                         @Query("action")String action,

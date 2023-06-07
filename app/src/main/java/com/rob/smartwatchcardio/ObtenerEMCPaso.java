@@ -10,8 +10,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -55,14 +57,20 @@ public class ObtenerEMCPaso extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_obtener_emcpaso);
 
-        paso = getIntent().getExtras().getInt("paso");
-        try {
-            globalVariable = new Environments();
-        } catch (NoSuchAlgorithmException | InvalidKeyException e) {
-            throw new RuntimeException(e);
-        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                paso = getIntent().getExtras().getInt("paso");
+                try {
+                    globalVariable = new Environments();
+                } catch (NoSuchAlgorithmException | InvalidKeyException e) {
+                    throw new RuntimeException(e);
+                }
 
-        getEMC();
+                getEMC();
+            }
+        }, 600);
     }
 
     private void getEMC(){
