@@ -92,7 +92,8 @@ public class AuthorizationComprobate extends AppCompatActivity {
                         startActivity(new Intent(AuthorizationComprobate.this, InicioPrincipal.class));
                     }
                 }else{
-                    startActivity(new Intent(AuthorizationComprobate.this, AuthorizationFalse.class));
+                    //TODO CAMBIAR A ACTIVIDAD FALLIDA
+                    startActivity(new Intent(AuthorizationComprobate.this, InicioPrincipal.class));
                 }
             }
 

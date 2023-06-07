@@ -6,49 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".Resultados">
 
-    <ImageButton
-        android:id="@+id/atrasButtonP"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/botonatras"
-        android:backgroundTint="@color/Principal"
-        android:scaleType="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/volverBtn"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icono_inicio_relleno"
-        app:tint="@color/colorBotones"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/volverBtn"
         android:layout_width="187dp"
         android:layout_height="74dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/cuadrado"
         android:backgroundTint="@color/Principal"
         android:fontFamily="@font/inter"
+        android:text="Comprobar"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SpeakableTextPresentCheck"
-        tools:text="Comprobar"
-        android:text="Comprobar"/>
+        tools:text="Comprobar" />
+
+    <ImageButton
+        android:id="@+id/atrasButtonP"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/botonatras"
+        android:backgroundTint="@color/Principal"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/volverBtn"
+        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/icono_inicio_relleno"
+        app:tint="@color/colorBotones"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="295dp"
         android:layout_height="288dp"
         android:layout_marginTop="88dp"
-        android:text="El día que lo iban a matar, Santiago Nasar se levantó a las 5.30 de la mañana para esperar el buque en que llegaba el obispo"
+        android:textSize="20sp"
+        android:text="Se han realizado todos los pasos correctamente.\n\nDale clic al botón de inicio para volver al inicio de la aplicación. \n\nSi deseas repetir el diagnóstico dale al botón de comprobar."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"

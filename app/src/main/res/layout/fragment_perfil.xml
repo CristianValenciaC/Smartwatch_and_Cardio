@@ -32,15 +32,15 @@
                 android:textSize="30sp"
                 android:textStyle="bold"/>
 
- <ImageButton
-     android:id="@+id/menu_btn"
-     android:layout_width="36dp"
-     android:layout_height="36dp"
-     android:background="?attr/selectableItemBackgroundBorderless"
-     android:scaleX="1.2"
-     android:scaleY="1.2"
-     android:src="@drawable/logout"
-     tools:ignore="TouchTargetSizeCheck" />
+             <ImageButton
+                 android:id="@+id/logout_btn"
+                 android:layout_width="36dp"
+                 android:layout_height="36dp"
+                 android:background="?attr/selectableItemBackgroundBorderless"
+                 android:scaleX="1.2"
+                 android:scaleY="1.2"
+                 android:src="@drawable/logout"
+                 tools:ignore="TouchTargetSizeCheck" />
 
 
         </LinearLayout>
@@ -57,8 +57,7 @@
             android:paddingBottom="30dp">
 
             <TextView
-
-                android:id="@+id/titulo_inicio2"
+                android:id="@+id/titulo_datos_personales"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -71,7 +70,7 @@
                 android:layout_height="12dp" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/titulo_nombre_completo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -79,12 +78,12 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/text_view_nombre_completo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/inter"
-                android:text="Maria del Pilar Rodríguez Conde"
+                android:text=""
                 android:textSize="16sp" />
 
             <Space
@@ -92,7 +91,7 @@
                 android:layout_height="12dp" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/titulo_edad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -100,12 +99,12 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/text_view_edad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/inter"
-                android:text="65 años"
+                android:text=""
                 android:textSize="16sp" />
 
             <Space
@@ -113,7 +112,7 @@
                 android:layout_height="12dp" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/titulo_sexo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -121,12 +120,12 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/text_view_sexo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/inter"
-                android:text="Mujer"
+                android:text=""
                 android:textSize="16sp" />
 
             <Space
@@ -134,20 +133,20 @@
                 android:layout_height="12dp" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/titulo_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
-                android:text="Correo Electronico"
+                android:text="Email"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/text_view_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/inter"
-                android:text="mariadelpilar12@gmail.com"
+                android:text=""
                 android:textSize="16sp" />
 
         </LinearLayout>
