@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,11 +24,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegistroCuenta extends AppCompatActivity {
 
-    EditText emailEditText, passwordEditText, confirmPasswordEditText;
-    Spinner genderSpinner;
-    Button createAccountBtn;
-    ProgressBar progressBar;
-    TextView loginBtnTextView;
+    private EditText emailEditText, passwordEditText, confirmPasswordEditText, nombreCompletoEditText, edadEditText;
+    private boolean passwordVisibility;
+    private Spinner genderSpinner;
+    private Button createAccountBtn;
+    private ProgressBar progressBar;
+    private TextView loginBtnTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,108 +39,128 @@ public class RegistroCuenta extends AppCompatActivity {
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         confirmPasswordEditText = findViewById(R.id.confirmPassword_edit_text);
+        nombreCompletoEditText = findViewById(R.id.nombrecompleto_edit_text);
+        edadEditText = findViewById(R.id.edad_edit_text);
         genderSpinner = findViewById(R.id.gender_spinner);
         createAccountBtn = findViewById(R.id.createAccount_button);
         progressBar = findViewById(R.id.progress_bar);
         loginBtnTextView = findViewById(R.id.register_text_view_link);
 
-        createAccountBtn.setOnClickListener((v) -> createAccount());
-        loginBtnTextView.setOnClickListener((v) -> startActivity(new Intent(RegistroCuenta.this, IniciarSesionActivity.class)));
+        createAccountBtn.setOnClickListener(v -> createAccount());
+        loginBtnTextView.setOnClickListener(v -> startActivity(new Intent(RegistroCuenta.this, IniciarSesionActivity.class)));
 
-
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.sexos, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sexos, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-
         genderSpinner.setAdapter(adapter);
 
+        setupPasswordVisibilityListener(passwordEditText);
+        setupPasswordVisibilityListener(confirmPasswordEditText);
     }
 
-    void createAccount(){
+    private void setupPasswordVisibilityListener(EditText editText) {
+        editText.setOnTouchListener((v, event) -> {
+            final int Right = 2;
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                if (event.getRawX() >= editText.getRight() - editText.getCompoundDrawables()[Right].getBounds().width()) {
+                    togglePasswordVisibility(editText);
+                    return true;
+                }
+            }
+            return false;
+        });
+    }
 
+    private void togglePasswordVisibility(EditText editText) {
+        int selection = editText.getSelectionEnd();
+
+        if (passwordVisibility) {
+            editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_off, 0);
+            editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            passwordVisibility = false;
+        } else {
+            editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+            editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            passwordVisibility = true;
+        }
+
+        editText.setSelection(selection);
+    }
+
+    private void createAccount() {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
+        String nombreCompleto = nombreCompletoEditText.getText().toString();
+        String edadString = edadEditText.getText().toString();
 
-        boolean isValidated = validateData(email, password, confirmPassword);
-
-        if(!isValidated){
+        if (!validateData(email, password, confirmPassword, nombreCompleto, edadString)) {
             return;
         }
 
         createAccountInFirebase(email, password);
     }
 
-
-    void createAccountInFirebase(String email, String password){
+    private void createAccountInFirebase(String email, String password) {
         changeInProgress(true);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistroCuenta.this,
-                new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            //La creacion de cuenta ha terminado
-                            Utility.showToast(RegistroCuenta.this, "Cuenta creada correctamente, revise su correo para verificar la cuenta");
-                            firebaseAuth.getCurrentUser().sendEmailVerification();
-                            firebaseAuth.signOut();
-                            finish();
-
-                        }else{
-                            //Fallo en crear la cuenta
-                            Utility.showToast(RegistroCuenta.this, task.getException().getLocalizedMessage());
-
-                        }
+                task -> {
+                    if (task.isSuccessful()) {
+                        //La creacion de cuenta ha terminado
+                        Utility.showToast(RegistroCuenta.this, "Cuenta creada correctamente, revise su correo para verificar la cuenta");
+                        firebaseAuth.getCurrentUser().sendEmailVerification();
+                        firebaseAuth.signOut();
+                        finish();
+                    } else {
+                        //Fallo en crear la cuenta
+                        Utility.showToast(RegistroCuenta.this, task.getException().getLocalizedMessage());
                     }
-                }
-        );
+                });
     }
 
-    /**
-     * Este metodo ocultara o no el elemento ProgressBar cuando
-     * se este procesando la petición
-     * @param inProgress
-     */
-    void changeInProgress(boolean inProgress){
-
-        if(inProgress){
+    private void changeInProgress(boolean inProgress) {
+        if (inProgress) {
             progressBar.setVisibility(View.VISIBLE);
             createAccountBtn.setVisibility(View.GONE);
-
-        }else{
+        } else {
             progressBar.setVisibility(View.GONE);
             createAccountBtn.setVisibility(View.VISIBLE);
         }
     }
 
-    /**
-     * Metodo para validar los datos de entrada de un usuario
-     * @param email
-     * @param password
-     * @param confirmPassword
-     * @return true o false dependiendo de si la validacion es correcta
-     */
-    boolean validateData(String email, String password, String confirmPassword){
+    private boolean validateData(String email, String password, String confirmPassword, String nombreCompleto, String edadString) {
+        if (nombreCompleto.isEmpty()) {
+            nombreCompletoEditText.setError("Ingrese su nombre completo");
+            return false;
+        }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emailEditText.setError("Email incorrecto");
-
             return false;
         }
 
-        if(password.length() < 6 ){
+        if (password.length() < 6) {
             passwordEditText.setError("La contraseña debe tener al menos 6 caracteres");
-
             return false;
         }
 
-        if(!password.equals(confirmPassword)){
+        if (!password.equals(confirmPassword)) {
             confirmPasswordEditText.setError("Contraseñas distintas");
+            return false;
+        }
 
+        if (edadString.isEmpty()) {
+            edadEditText.setError("Ingrese su edad");
+            return false;
+        }
+
+        int edad = Integer.parseInt(edadString);
+        if (edad <= 0) {
+            edadEditText.setError("Edad incorrecta");
             return false;
         }
 
         return true;
     }
-
 }

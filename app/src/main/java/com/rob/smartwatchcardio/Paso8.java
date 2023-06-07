@@ -41,8 +41,9 @@ public class Paso8 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Paso8.this, Paso9.class);
+                Intent intent = new Intent(Paso8.this, ObtenerEMCPaso.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                intent.putExtra("paso", 8);
                 finish();
                 startActivity(intent);
 

@@ -32,7 +32,6 @@
                 android:textSize="30sp"
                 android:textStyle="bold"/>
 
-<!--
  <ImageButton
      android:id="@+id/menu_btn"
      android:layout_width="36dp"
@@ -41,7 +40,7 @@
      android:scaleX="1.2"
      android:scaleY="1.2"
      android:src="@drawable/logout"
-     tools:ignore="TouchTargetSizeCheck" /> -->
+     tools:ignore="TouchTargetSizeCheck" />
 
 
         </LinearLayout>

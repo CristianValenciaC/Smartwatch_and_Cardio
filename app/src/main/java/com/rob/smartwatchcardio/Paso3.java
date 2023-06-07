@@ -39,7 +39,7 @@ public class Paso3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(Paso3.this, Paso4.class));
+                startActivity(new Intent(Paso3.this, ObtenerEMCPaso.class).putExtra("paso", 3));
             }
         });
     }
