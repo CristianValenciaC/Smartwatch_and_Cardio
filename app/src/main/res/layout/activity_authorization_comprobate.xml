@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+    android:background="@color/Principal"
+        tools:context=".authorizationwatch.AuthorizationComprobate">
+
+    <TextView
+        android:id="@+id/inicioSesion_text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/comprobando_la_autorizacion_con_el_reloj"
+        android:textSize="24sp"
+        android:textColor="#525252"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_margin="20dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar_authorization"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:indeterminateTint="@color/white" />
+
+</LinearLayout>
