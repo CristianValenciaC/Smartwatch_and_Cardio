@@ -173,7 +173,7 @@ public class RegistroCuenta extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task2) {
                                 if(task2.isSuccessful()){
-                                    startActivity(new Intent(RegistroCuenta.this, InicioPrincipal.class));
+                                    startActivity(new Intent(RegistroCuenta.this, Authorization.class));
                                     finish();
 
                                 }else{
