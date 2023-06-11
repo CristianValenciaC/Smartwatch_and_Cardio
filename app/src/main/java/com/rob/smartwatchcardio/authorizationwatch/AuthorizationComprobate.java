@@ -67,7 +67,7 @@ public class AuthorizationComprobate extends AppCompatActivity {
         APIRequest apiInterface = info.create(APIRequest.class);
         SharedPreferences pref = getSharedPreferences(currentUser.getUid(), Context.MODE_PRIVATE);
         globalVariable.setAction("requesttoken");
-        globalVariable.setAccess_token(pref.getString("refresh_token"," "));
+        globalVariable.setRefresh_token(pref.getString("refresh_token"," "));
 
         Call<ObtainRequest> accessTokenCall = apiInterface.refreshAccessToken(globalVariable.getAction(),
                 globalVariable.getIdUser(), globalVariable.getSecret(),
